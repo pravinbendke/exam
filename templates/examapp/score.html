@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #0f4c75, #3282b8);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+            font-size: 36px;
+            color: #00ffcc;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #1b6ca8;
+            color: white;
+            font-size: 18px;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        td {
+            font-size: 16px;
+            color: #f1f1f1;
+        }
+
+        span {
+            font-size: 22px;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>!! RESULT !!</h1>
+        <table>
+            <tr>
+                <th>Qno</th>
+                <th>Question</th>
+                <th>Correct Answer</th>
+                <th>Submitted Answer</th>
+            </tr>
+            {% for list in listoflist %}
+                <tr>
+                    <td>{{ list.0 }}</td>
+                    <td>{{ list.1 }}</td>
+                    <td>{{ list.2 }}</td>
+                    <td>{{ list.3 }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <span>{{ username.upper }}, YOUR SCORE IS {{ score }}</span>
+    </center>
+</body>
+</html>
