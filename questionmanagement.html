@@ -1,0 +1,150 @@
+{% load static %}
+<html>
+<head>
+    <style>
+        body::before {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: url("{% static 'images/question.png' %}");
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Fixed full-screen background image */
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 12px;
+            color: white;
+        }
+        .blue-text {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .orange-text {
+            color: #e67e22;
+            font-weight: 600;
+        }
+        .brand-name {
+            font-size: 4rem; /* ⬅️ Increased font size */
+            padding: 2.5rem 0;
+            justify-content: center;
+            gap: 0.2rem;
+            font-weight: 800;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        }
+        .brand-part {
+            display: flex;
+            justify-content: center;
+            gap: 0.1rem;
+            font-weight: 1;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: calc(47% - 10px);
+            padding: 10px;
+            margin: 8px 1%;
+            border: none;
+            border-radius: 6px;
+            background-color: #1f3a59;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #264b74;
+        }
+
+        span {
+            color: red;
+            font-size: 2.5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+<center>
+    <span class="brand-name">
+        <span class="blue-text">Online</span>
+        <span class="orange-text">Assessment</span>
+    </span>
+    <br>
+    <span class="brand-part">
+        <span class="blue-text">Question</span>
+        <span class="orange-text">Management</span>
+    </span>
+    <form class="form-container" onsubmit="return confirm('do you want to continue?')">
+        <label for="qno">Question Number</label>
+        <input type="text" placeholder="Enter Question Number" name="qno" value="{{question.qno}}">
+        <label for="qtext">Question</label>
+        <input type="text" placeholder="Enter Question" name="qtext" value="{{question.qtext}}">
+        <label for="answer">Correct Answer</label>
+        <input type="text" placeholder="Enter correct answer" name="answer" value="{{question.answer}}">
+        <label for="op1">Option 1</label>
+        <input type="text" placeholder="Option 1" name="op1" value="{{question.op1}}">
+        <label for="op2">Option 2</label>
+        <input type="text" placeholder="Option 2" name="op2" value="{{question.op2}}">
+        <label for="op3">Option 3</label>
+        <input type="text" placeholder="Option 3" name="op3" value="{{question.op3}}">
+        <label for="op4">Option 4</label>
+        <input type="text" placeholder="Option 4" name="op4" value="{{question.op4}}">
+        <label for="subject">Subject</label>
+        <input type="text" placeholder="Subject" name="subject" value="{{question.subject}}">
+        <input type="submit" value="Add Question" formaction="/examapp/addQuestion/">
+        <input type="submit" value="View Question" formaction="/examapp/viewQuestion/">
+        <input type="submit" value="Update Question" formaction="/examapp/updateQuestion/">
+        <input type="submit" value="Delete Question" formaction="/examapp/deleteQuestion/">
+    </form>
+    <span style="color:red;font-size: 30px;">{{message}}</span>
+</center>
+</body>
+</html>
