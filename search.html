@@ -1,0 +1,100 @@
+<html>
+  <head><title>search</title></head>
+  <style>
+    /* Heading */
+      h1 {
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 2.5rem;
+        margin: 30px 0 20px;
+        color: #2c3e50;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      }
+
+      /* Pagination Links */
+      a[href*="/examapp/search/"] {
+        margin: 0 5px;
+        padding: 8px 12px;
+        background-color: #f1f1f1;
+        color: #3498db;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      a[href*="/examapp/search/"]:hover {
+        background-color: #3498db;
+        color: white;
+      }
+
+      /* Table Styling */
+      table {
+        width: 90%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 12px 16px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #3498db;
+        color: white;
+        font-size: 1.1rem;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      /* Admin Dashboard Link */
+      a[href="/examapp/giveMePage3"] {
+        display: block;
+        text-align: center;
+        margin: 20px auto 40px;
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #2c3e50;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+
+      a[href="/examapp/giveMePage3"]:hover {
+        background-color: #1a252f;
+      }
+  </style>
+<body>
+    <h1> Result Analysis</h1>
+{% for pageno in listofint %}
+        <a href="/examapp/search/{{pageno}}"> {{pageno}} </a>
+{% endfor %}
+    <table>
+        <tr>
+        <th>username</th>
+        <th>subject</th>
+        <th>score</th>
+        </tr>
+            {% for result in results %}
+                <tr>
+                    <td> {{result.username}} </td>
+                    <td> {{result.subject}} </td>
+                    <td> {{result.score}} </td>
+              </tr>
+            {% endfor %}
+      </table>
+    <a href="/examapp/main_page"> go to admin dashboard </a>
+  </body>
+</html>
+
